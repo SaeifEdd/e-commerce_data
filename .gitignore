@@ -1,0 +1,7 @@
+__pycache__/
+data/
+chromedriver
+chrome-linux64/
+venv/
+.idea/
+notebooks

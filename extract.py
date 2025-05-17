@@ -7,6 +7,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+data_path = "data/raw/tunisianet_smartphones.csv"
+num_pages = 5 #choose nb of pages to scrape
+
 def init_driver():
     options = Options()
     options.binary_location = "./chrome-linux64/chrome"
@@ -83,7 +86,7 @@ def scrape_page(driver, url):
     })
 
 
-def scrape_all_pages(num_pages=5, base_url="https://www.tunisianet.com.tn/596-smartphone-tunisie"):
+def scrape_all_pages(num_pages, base_url="https://www.tunisianet.com.tn/596-smartphone-tunisie"):
     driver = init_driver()
     all_dataframes = []
     try:
@@ -99,11 +102,13 @@ def scrape_all_pages(num_pages=5, base_url="https://www.tunisianet.com.tn/596-sm
     return pd.concat(all_dataframes, ignore_index=True)
 
 
-def save_to_csv(df, path="data/raw/tunisianet_smartphones.csv"):
-    df.to_csv(path, index=False)
-    print(f"Saved data to {path}")
+def save_to_csv(df, data_path):
+    df.to_csv(data_path, index=False)
+    print(f"Saved data to {data_path}")
 
+def extract_data(data_path):
+    df = scrape_all_pages(num_pages)
+    save_to_csv(df, data_path)
 
 if __name__ == "__main__":
-    df = scrape_all_pages()
-    save_to_csv(df)
+    extract_data()

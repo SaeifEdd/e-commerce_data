@@ -8,6 +8,7 @@ def clean(input_path: str, output_path: str):
     df['price'] = df['price'].str.replace('DT', '').str.replace(',', '.').astype(float)
 
     df.to_csv(output_path, index=False)
-    return df
+
+    return
 
 # next: extract more features using descriptions column

@@ -2,6 +2,7 @@ __pycache__/
 data/
 chromedriver
 chrome-linux64/
+chrome-linux64.zip
 venv/
 .idea/
 notebooks

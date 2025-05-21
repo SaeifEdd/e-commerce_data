@@ -1,6 +1,6 @@
-from extract import extract_data
-from transform import clean
-from load import load
+from src.extract import extract_data
+from src.transform import clean
+from src.load import load
 
 in_path = "data/raw/tunisianet_smartphones.csv"
 out_path = "data/processed/tunisianet_smartphones_.csv"
